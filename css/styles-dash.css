@@ -1,0 +1,30 @@
+.input-login {
+   width: 150%;
+   height: 40px;
+   border-radius: 5px;
+   border: 1px solid #ccc;
+   padding: 0 10px;
+   font-size: 14px;
+   color: #333;
+   outline: none;
+   transition: all 0.3s ease;
+   text-align: center;
+}
+
+.btn-submit {
+   height: 40px;
+}
+
+.logo_vertical {
+   width: 135%;
+}
+
+table tr:last-child td:first-child {
+   border: 2px solid orange;
+   border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+   border: 2px solid green;
+   border-bottom-right-radius: 10px;
+}
