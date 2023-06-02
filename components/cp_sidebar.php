@@ -48,8 +48,8 @@
                   <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Beacons:</h6>
-                        <a class="collapse-item" href="/components/cp_manage_beacons.php">Manage Beacons</a>
-                        <a class="collapse-item" href="/components/cp_add_beacon.php">Add New Beacon</a>
+                        <a class="collapse-item" href="./manage_beacons.php">Manage Beacons</a>
+                        <a class="collapse-item" href="./add_beacon.php">Add New Beacon</a>
                      </div>
                   </div>
                </li>
