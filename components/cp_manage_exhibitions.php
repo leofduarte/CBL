@@ -28,9 +28,13 @@ if (isset($_GET["id"])) {
       // Define the query
       $query = "SELECT id_exposicao, nome_exposicao FROM exposicoes";
 
-      echo '
-      <select class="form-select p-3 px-4 border border-2 border-dark rounded" aria-label="Default select example">
-      <option selected>Select the Exhibition</option>';
+      echo '      
+      <div class="dropdown">
+         <a class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Selecione a exposição
+         </a>
+       <ul class="dropdown-menu">';
+
 
       // Prepare the statement
       if (mysqli_stmt_prepare($stmt, $query)) {
@@ -42,7 +46,8 @@ if (isset($_GET["id"])) {
 
             // Fetch value
             while (mysqli_stmt_fetch($stmt)) {
-               echo '<option value="' . $id_exposicao . '">'. $nome . '</option>';
+                echo '
+                <li style="text-align: center; font-size: 1.2rem"><a class="dropdown-item" href="./manage_exhibitions.php?id=' . $id_exposicao . $nome . '</a></li>';
             }
          } else {
             // Execute error
