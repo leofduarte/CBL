@@ -123,6 +123,6 @@ $query = "SELECT id_perfil, role, nome, email
          mysqli_close($link);
          ?>
          </form>
-         <a href='./scripts/sc_delete_funcionario.php?id_funcionario=" . $id_funcionario . "'><i class='px-1 text-dark bi bi-trash'></i>Remover </a>
+         <a href='./scripts/sc_delete_funcionario.php?id_funcionario=" . $id_funcionario . "'><i class='px-1 text-dark bi bi-trash'></i>Remover</a>
    </div>
 </div>
