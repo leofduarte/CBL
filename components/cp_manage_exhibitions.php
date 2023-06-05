@@ -2,13 +2,6 @@
 // conexão à base de dados
 require_once("connections/connection.php");
 
-// Verify the query string requirements
-if (isset($_GET["id"])) {
-    // Store values
-    $id_exposicao = (int) $_GET["id"];
-
-}
-
 ?>
 
 <!-- Begin Page Content -->
@@ -47,8 +40,8 @@ if (isset($_GET["id"])) {
             // Fetch value
             while (mysqli_stmt_fetch($stmt)) {
                 echo '
-                <li style="text-align: center; font-size: 1.2rem"><a class="dropdown-item" href="./manage_exhibitions.php?id=' . $id_exposicao . $nome . '</a></li>';
-            }
+                <li style="font-size: 1.2rem"><a class="dropdown-item" href="manage_exhibitions.php?id_exposicao=' . $id_exposicao . '">'  . $nome. '</a></li>';
+              }
          } else {
             // Execute error
             echo "Error: " . mysqli_stmt_error($stmt);
@@ -59,17 +52,53 @@ if (isset($_GET["id"])) {
       }
       // Close statement
       mysqli_stmt_close($stmt);
-
-      // Close connection
-      mysqli_close($link);
-    
       ?>
       </select>
    </div>
-   <div style="border-radius: 2rem; background-color:#E9E5FF;" class="p-2 my-5 mx-5">
-   <h1>Nome da obra</h1>
-   <p>Beacon a</p>
-   </div>
 
+   <?php
+   //! NOVO STMT
+   // Create a prepared statement
+   $stmt = mysqli_stmt_init($link);
+
+    // Verify the query string requirements
+    if (isset($_GET["id_exposicao"])) {
+        // Store values
+        $id_exposicao = (int) $_GET["id_exposicao"];
+    }
+
+   // Define the query
+   $query = "SELECT nome_exposicao FROM exposicoes
+            WHERE id_exposicao = ?";
+
+
+   // Prepare the statement
+   if (mysqli_stmt_prepare($stmt, $query)) {
+    mysqli_stmt_bind_param($stmt, "i", $id_exposicao);
+      // Execute the prepared statement
+      if (mysqli_stmt_execute($stmt)) {
+         // Bind result variables
+         mysqli_stmt_bind_result($stmt, $nome_exposicao);
+
+         // Fetch value
+            if (mysqli_stmt_fetch($stmt)) {
+                echo '<p class="mt-5 fs-5">'. $nome_exposicao. '</p>';
+            } else{
+                echo '<p class="mt-5 fs-5">Selecione uma exposição.</p>';
+            }
+      } else {
+         // Execute error
+         echo "Error: " . mysqli_stmt_error($stmt);
+      }
+   } else {
+      // Errors related with the query
+      echo "Error: " . mysqli_error($link);
+   }
+   // Close statement
+   mysqli_stmt_close($stmt);
+
+   // Close connection
+   mysqli_close($link);
+   ?>
+ 
 </div>
-

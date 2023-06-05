@@ -37,7 +37,7 @@ require_once("connections/connection.php");
             // Fetch value
             while (mysqli_stmt_fetch($stmt)) {
                echo '
-               <li style="text-align: center; font-size: 1.2rem"><a class="dropdown-item" href="manage_beacons.php?id=' . $id_beacon . '">Beacon' . " " . $id_beacon . '</a></li>';
+               <li style="font-size: 1.2rem"><a class="dropdown-item" href="manage_beacons.php?id=' . $id_beacon . '">Beacon' . " " . $id_beacon . '</a></li>';
             }
          } else {
             // Execute error
