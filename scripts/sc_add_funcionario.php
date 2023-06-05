@@ -21,9 +21,9 @@ if (isset($_POST["name"]) && isset($_POST["email"]) &&  isset($_POST["password"]
       // Devemos validar também o resultado do execute!
       if (mysqli_stmt_execute($stmt)) {
          // Acção de sucesso
-         echo "registo com sucesso";
-         // header("Location: ../index.php");
+         header("Location: ../funcionarios.php?msg=5");
       } else {
+         header("Location: ../funcionarios.php?msg=6");
          // Acção de erro
          echo "Error:" . mysqli_stmt_error($stmt);
       }
