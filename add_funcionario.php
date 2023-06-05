@@ -7,8 +7,8 @@
 <!-- navbar -->
 <?php include_once "./components/cp_navbar.php" ?>
 
-<!-- users -->
-<?php include_once "./components/cp_manage_beacons.php" ?>
+<!-- funcionarios -->
+<?php include_once "./components/cp_add_funcionario.php" ?>
 
 <!-- Rodapé -->
 <?php include_once "./components/cp_footer.php" ?>
