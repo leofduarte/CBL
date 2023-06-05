@@ -4,3 +4,9 @@ Info sobre o projeto
 
 adicionar beacons -> ✅
 listar beacons -> ❌
+
+Dashboard:
+-> info premios
+-> info utilizadores
+-> info beacons + interativos e - interativos
+
