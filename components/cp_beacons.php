@@ -4,10 +4,8 @@ require_once("connections/connection.php");
 
 ?>
 
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
 
    <?php
    if (isset($_GET["msg"])) {
@@ -66,8 +64,7 @@ require_once("connections/connection.php");
       $query = "SELECT id_beacon, nome_beacon, uuid_beacon, id_obra, nome_obra
                 FROM obra
                 right JOIN beacons
-               ON ref_beacons = id_beacon
-                ORDER BY id_beacon ASC
+                ON ref_beacons = id_beacon
                 ";
       //! LIMIT 6 OFFSET 0
 

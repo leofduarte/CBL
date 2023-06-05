@@ -29,7 +29,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                $_SESSION["email"] = $email;
 
 
-               header("Location: ../inicio.php");
+               header("Location: ./inicio.php");
                // Feedback de sucesso
                echo "sucesso de login";
             } else {

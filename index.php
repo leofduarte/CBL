@@ -74,9 +74,7 @@ mysqli_close($link);
             <div class="mb-3">
                 <input class="input-login" type="password" placeholder="Password" name="password" required>
             </div>
-            <button type="submit" class="btn-submit btn btn-primary px-4">Submit</button>
+            <button type="submit" class="btn-submit btn btn-definir-obra px-4">Entrar</button>
         </form>
     </div>
 </div>
-
-<?php var_dump($_SESSION); ?>

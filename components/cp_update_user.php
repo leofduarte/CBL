@@ -1,7 +1,7 @@
 <?php
-if (isset($_GET["id_funcionario"])) {
+if (isset($_GET["id_utilizador"])) {
    // Store values
-   $id_func = $_GET["id_funcionario"];
+   $id_user = $_GET["id_utilizador"];
 
 
    // conexão à base de dados
@@ -15,19 +15,18 @@ if (isset($_GET["id_funcionario"])) {
    $stmt = mysqli_stmt_init($link);
 
    // Define the query
-   $query = "SELECT id_perfil, role, nome, email
-         FROM perfil
-         INNER JOIN funcionarios 
-         ON ref_perfil = id_perfil
-         WHERE id_funcionario = ?
+   $query = "SELECT id_utilizador, utilizadores.nome, email
+         FROM utilizadores
+         INNER JOIN nacionalidades ON ref_nacionalidade = id_nacionalidade 
+         WHERE id_utilizador = ?
   ";
 ?>
    <!-- Begin Page Content -->
    <div class="container-fluid">
-      <h1 style="color:#393166;" class="mt-5 ms-3">Funcionários</h1>
+      <h1 style="color:#393166;" class="mt-5 ms-3">Editar</h1>
 
       <div style="border-radius: 2rem; background-color:#F4F2FF;" class="p-4 mb-5 mt-4">
-         <h2 style="color:#393166" class="mb-4 ">Editar Funcionários</h2>
+         <h2 style="color:#393166" class="mb-4 ">Editar Utilizador</h2>
 
          <!-- Begin Page Content -->
          <div class="container-fluid">
@@ -35,7 +34,7 @@ if (isset($_GET["id_funcionario"])) {
             // Prepare the statement
             if (mysqli_stmt_prepare($stmt, $query)) {
                // Bind variables to the prepared statement as parameters
-               mysqli_stmt_bind_param($stmt, 'i', $id_func);
+               mysqli_stmt_bind_param($stmt, 'i', $id_user);
                // Execute the prepared statement
                if (mysqli_stmt_execute($stmt)) {
                   // Bind result variables
