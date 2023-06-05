@@ -22,21 +22,30 @@ if (isset($_GET["id"])) {
                  obra.nome_obra = ?,
                  exposicoes.data_inicio = ?,
                  exposicoes.data_fim = ?,
-                 salas_has_exposicoes.nome_sala = ?
+                 salas_has_exposicoes.nome = ?
              WHERE exposicoes.id_exposicao = ?";
 
    if (mysqli_stmt_prepare($stmt, $query)) {
       // Verificar se os campos do formulário estão definidos
-      if (isset($_POST['nome_exposicao'], $_POST['descricao'], $_POST['nome_sala'], $_POST['nome_obra'], $_POST['data_inicio'], $_POST['data_fim'])) {
+      if (isset($_POST['nome_exposicao'], $_POST['descricao'], $_POST['nome_sala'], $_POST['nome_obra'])) {
          $nome_exposicao = $_POST['nome_exposicao'];
          $descricao = $_POST['descricao'];
          $nome_sala = $_POST['nome_sala'];
          $nome_obra = $_POST['nome_obra'];
-         $data_inicio = $_POST['data_inicio'];
-         $data_fim = $_POST['data_fim'];
          $nome = $_POST['nome'];
 
-         mysqli_stmt_bind_param($stmt, 'ssssssi', $nome_exposicao, $nome_sala, $nome_obra, $data_inicio, $data_fim, $nome, $id_exposicao);
+         $data_inicio = NULL;
+         if(!empty($_POST ['data_inicio'])){
+             $data_inicio = $_POST ['data_inicio'];
+         }
+ 
+          $data_fim = NULL;
+             if(!empty($_POST ['data_fim'])){
+                   $data_fim = $_POST ['data_fim'];
+             }
+ 
+
+         mysqli_stmt_bind_param($stmt, 'ssssssi', $nome_exposicao, $nome_sala, $nome_obra, $nome, $id_exposicao, $data_inicio, $data_fim);
 
          // Executar a consulta
          if (mysqli_stmt_execute($stmt)) {
@@ -47,8 +56,9 @@ if (isset($_GET["id"])) {
             // Ação de erro
             echo "Error: " . mysqli_stmt_error($stmt);
          }
-      } else {
+       } else {
          echo "Nenhum dado foi enviado!";
+         var_dump($_POST);
       }
    } else {
       // Ação de erro
