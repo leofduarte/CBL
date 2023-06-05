@@ -22,7 +22,7 @@
 
                <!-- Heading -->
                <div class="sidebar-heading">
-                  Interface
+                  Astrodata
                </div>
 
                <!-- Nav Item - Pages Collapse Menu -->
@@ -73,7 +73,7 @@
 
                <!-- Heading -->
                <div class="sidebar-heading">
-                  Addons
+                  Astroprize
                </div>
 
                <!-- Nav Item - Pages Collapse Menu -->
@@ -98,16 +98,9 @@
 
                <!-- Nav Item - Charts -->
                <li class="nav-item">
-                  <a class="nav-link" href="charts.html">
-                     <i class="fas fa-fw fa-chart-area"></i>
-                     <span>Charts</span></a>
-               </li>
-
-               <!-- Nav Item - Tables -->
-               <li class="nav-item">
-                  <a class="nav-link" href="tables.html">
-                     <i class="fas fa-fw fa-table"></i>
-                     <span>Tables</span></a>
+                  <a class="nav-link" href="./users.php">
+                     <i class="bi bi-people-fill"></i>
+                     <span>Utilizadores</span></a>
                </li>
 
                <!-- Divider -->
