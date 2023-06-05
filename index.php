@@ -61,11 +61,11 @@ mysqli_close($link);
 </head>
 
 
-<div class="d-flex ">
+<div class="d-flex " >
     <div>
         <img class="vh-100" src="img/login_img.jpg" alt="login imagem">
     </div>
-    <div class="d-flex justify-content-center flex-column">
+    <div class="d-flex justify-content-center flex-column" style="margin-left: 20rem;">
         <img class="logo_vertical" src="img/logo_vertical_dashboard.svg" alt="logotipo">
         <form action="./scripts/sc_login_dash.php" method="post">
             <div class="mb-3 mt-3">
@@ -74,9 +74,13 @@ mysqli_close($link);
             <div class="mb-3">
                 <input class="input-login" type="password" placeholder="Password" name="password" required>
             </div>
-            <button type="submit" class="btn-submit btn btn-primary px-4">Submit</button>
+            <div class="text-right"> 
+                <button type="submit" class="btn-submit btn btn-definir-obra px-4">Entrar</button>
+            </div>
         </form>
     </div>
+
+
+
 </div>
 
-<?php var_dump($_SESSION); ?>

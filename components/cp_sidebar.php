@@ -22,7 +22,7 @@
 
                <!-- Heading -->
                <div class="sidebar-heading">
-                  Interface
+                  Astrodata
                </div>
 
                <!-- Nav Item - Pages Collapse Menu -->
@@ -39,6 +39,19 @@
                      </div>
                   </div>
                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        <i class="bi bi-easel"></i>
+                        <span>Obras</span>
+                    </a>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Personalizar Obras:</h6>
+                            <a class="collapse-item" href="./obras.php">Gerir Obras</a>
+                            <a class="collapse-item" href="./add_obras.php">Adicionar Obras</a>
+                        </div>
+                    </div>
+                </li>
 
                <li class="nav-item">
                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
@@ -73,7 +86,7 @@
 
                <!-- Heading -->
                <div class="sidebar-heading">
-                  Addons
+                  Astroprize
                </div>
 
                <!-- Nav Item - Pages Collapse Menu -->
@@ -98,16 +111,9 @@
 
                <!-- Nav Item - Charts -->
                <li class="nav-item">
-                  <a class="nav-link" href="charts.html">
-                     <i class="fas fa-fw fa-chart-area"></i>
-                     <span>Charts</span></a>
-               </li>
-
-               <!-- Nav Item - Tables -->
-               <li class="nav-item">
-                  <a class="nav-link" href="tables.html">
-                     <i class="fas fa-fw fa-table"></i>
-                     <span>Tables</span></a>
+                  <a class="nav-link" href="./users.php">
+                     <i class="bi bi-people-fill"></i>
+                     <span>Utilizadores</span></a>
                </li>
 
                <!-- Divider -->
