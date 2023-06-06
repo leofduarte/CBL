@@ -53,7 +53,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
             <div class="mb-3 mt-3">
                 <label for="nome_exposicao" class="form-label">Nome Exposição:</label>
-                <input type="text" class="form-control" id="nome_exposicao" value="' . htmlspecialchars($nome_exposicao) . '" name="nome_exposicao" required>
+                <input type="text" class="form-control" id="nome_exposicao" value="' . $nome_exposicao . '" name="nome_exposicao" required>
             </div>
 
             <div class="mb-3 mt-3">
@@ -63,12 +63,12 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
             <div class="mb-3 mt-3">
                 <label for="data_inicio" class="form-label">Data de Inicio:</label>
-                <input type="date" class="form-control" id="data_inicio" value="' . htmlspecialchars($data_inicio) . '" name="data_inicio">
+                <input type="date" class="form-control" id="data_inicio" value="' . $data_inicio . '" name="data_inicio">
             </div>
 
             <div class="mb-3 mt-3">
                 <label for="data_fim" class="form-label">Data de Fim:</label>
-                <input type="date" class="form-control" id="data_fim" value="' . htmlspecialchars($data_fim) . '" name="data_fim">
+                <input type="date" class="form-control" id="data_fim" value="' . $data_fim . '" name="data_fim">
             </div>';
 
     } else {
@@ -85,13 +85,13 @@ mysqli_stmt_close($stmt);
 // Create a prepared statement for the "Sala" select field
 $stmt = mysqli_stmt_init($link);
 
-$query_sala = "SELECT nome_sala FROM salas";
+$query_sala = "SELECT id_sala, nome_sala FROM salas";
 // Prepare the statement
 if (mysqli_stmt_prepare($stmt, $query_sala)) {
     // Execute the prepared statement
     if (mysqli_stmt_execute($stmt)) {
         // Bind result variables
-        mysqli_stmt_bind_result($stmt, $nome_sala);
+        mysqli_stmt_bind_result($stmt, $id_sala, $nome_sala);
 
         echo '<div class="mb-3 mt-3">
             <label for="sala" class="form-label">Sala:</label>
@@ -101,7 +101,7 @@ if (mysqli_stmt_prepare($stmt, $query_sala)) {
 
         // Fetch values
         while (mysqli_stmt_fetch($stmt)) {
-            echo '<option value="' . htmlspecialchars($nome_sala) . '">' . htmlspecialchars($nome_sala) . '</option>';
+            echo '<option value="' . htmlspecialchars($id_sala) . '">' . htmlspecialchars($nome_sala) . '</option>';
         }
 
         echo '</select>
@@ -121,7 +121,7 @@ mysqli_stmt_close($stmt);
 $stmt = mysqli_stmt_init($link);
 
 $query_obra = "
-    SELECT obra.nome_obra 
+    SELECT obra.nome_obra, obra.id_obra
     FROM exposicoes
     INNER JOIN salas_has_exposicoes ON exposicoes.id_exposicao = salas_has_exposicoes.exposicoes_id_exposicao
     INNER JOIN salas ON salas_has_exposicoes.salas_id_sala = salas.id_sala
@@ -137,7 +137,7 @@ if (mysqli_stmt_prepare($stmt, $query_obra)) {
     // Execute the prepared statement
     if (mysqli_stmt_execute($stmt)) {
         // Bind result variables
-        mysqli_stmt_bind_result($stmt, $nome_obra);
+        mysqli_stmt_bind_result($stmt, $nome_obra, $id_obra);
 
         echo '<div class="mb-3 mt-3">
             <label for="obra" class="form-label">Obra:</label>
@@ -147,7 +147,7 @@ if (mysqli_stmt_prepare($stmt, $query_obra)) {
 
         // Fetch values
         while (mysqli_stmt_fetch($stmt)) {
-            echo '<option value="' . htmlspecialchars($nome_obra) . '">' . htmlspecialchars($nome_obra) . '</option>';
+            echo '<option value="' . $id_obra. '">' . $nome_obra . '</option>';
         }
 
         echo '</select>
