@@ -109,10 +109,11 @@ $query = "SELECT id_perfil, role
             ?>
             </select>
          </div>
-         <button type="submit" class="btn btn-primary">Submit</button>
+         <button type="submit" class="btn btn-primary">Adicionar</button>
          <?php
          // Close connection
          mysqli_close($link);
          ?>
          </form>
    </div>
+</div>
