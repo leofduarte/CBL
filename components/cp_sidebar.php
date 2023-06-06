@@ -23,7 +23,6 @@
                <!-- Heading -->
                <div class="sidebar-heading">
                   Astrodata
-                  Astrodata
                </div>
 
                <!-- Nav Item - Pages Collapse Menu -->
@@ -49,7 +48,7 @@
                      <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Personalizar Obras:</h6>
                         <a class="collapse-item" href="./obras.php">Gerir Obras</a>
-                        <a class="collapse-item" href="./add_obras.php">Adicionar Obras</a>
+                        <a class="collapse-item" href="./add_obra.php">Adicionar Obras</a>
                      </div>
                   </div>
                </li>
@@ -87,7 +86,6 @@
 
                <!-- Heading -->
                <div class="sidebar-heading">
-                  Astroprize
                   Astroprize
                </div>
 

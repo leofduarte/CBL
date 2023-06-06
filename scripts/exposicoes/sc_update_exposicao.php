@@ -6,21 +6,21 @@ if (isset($_GET["id"])) {
    $id_exposicao = $_GET["id"];
 }
 
-   if (isset($_POST['nome_exposicao']) && isset($_POST['descricao']) && isset($_POST['nome_sala']) && isset($_POST['nome_obra'])) {
-      $nome_exposicao = $_POST['nome_exposicao'];
-      $descricao = $_POST['descricao'];
-      $id_sala = $_POST['sala'];
-      $id_obra = $_POST['obra'];
+if (isset($_POST['nome_exposicao']) && isset($_POST['descricao']) && isset($_POST['sala']) && isset($_POST['obra'])) {
+   $nome_exposicao = $_POST['nome_exposicao'];
+   $descricao = $_POST['descricao'];
+   $id_sala = $_POST['sala'];
+   $id_obra = $_POST['obra'];
 
-      $data_inicio = NULL;
-      if(!empty($_POST ['data_inicio'])){
-          $data_inicio = $_POST ['data_inicio'];
-      }
+   $data_inicio = NULL;
+   if (!empty($_POST['data_inicio'])) {
+      $data_inicio = $_POST['data_inicio'];
+   }
 
-       $data_fim = NULL;
-          if(!empty($_POST ['data_fim'])){
-                $data_fim = $_POST ['data_fim'];
-          }
+   $data_fim = NULL;
+   if (!empty($_POST['data_fim'])) {
+      $data_fim = $_POST['data_fim'];
+   }
    // Create a new DB connection
    $link = new_db_connection();
 
@@ -28,6 +28,10 @@ if (isset($_GET["id"])) {
    $stmt = mysqli_stmt_init($link);
 
    /* Define the query */
+
+   // query para UPDATE info da tabela exposições - nome, descrição, data_inicio e data_fim
+   // outra query para insert na salas_has_exposicoes com id_sala e id_exposicao
+   // 
    $query = "UPDATE exposicoes
              INNER JOIN salas_has_exposicoes ON exposicoes.id_exposicao = salas_has_exposicoes.exposicoes_id_exposicao
              INNER JOIN salas ON salas_has_exposicoes.salas_id_sala = salas.id_sala
@@ -44,19 +48,20 @@ if (isset($_GET["id"])) {
    if (mysqli_stmt_prepare($stmt, $query)) {
       // Verificar se os campos do formulário estão definidos
 
-         mysqli_stmt_bind_param($stmt, 'siiiss', $nome_exposicao, $id_sala, $id_obra, $id_exposicao, $data_inicio, $data_fim);
+      var_dump($nome_exposicao, $id_sala, $id_obra, $data_inicio, $data_fim, $descricao, $id_exposicao);
+      die();
+      mysqli_stmt_bind_param($stmt, 'siisssi', $nome_exposicao, $id_sala, $id_obra, $data_inicio, $data_fim, $descricao, $id_exposicao);
 
-         // Executar a consulta
-         if (mysqli_stmt_execute($stmt)) {
-            // Redirecionar após o sucesso
-            header("Location: ../../exposicoes.php");
-            exit();
-         } else {
-           echo "erro";
-            // Ação de erro
-            echo "Error: " . mysqli_stmt_error($stmt);
-         }
-      
+      // Executar a consulta
+      if (mysqli_stmt_execute($stmt)) {
+         // Redirecionar após o sucesso
+         header("Location: ../../exposicoes.php");
+         exit();
+      } else {
+         echo "erro";
+         // Ação de erro
+         echo "Error: " . mysqli_stmt_error($stmt);
+      }
    } else {
       echo "erro 2";
       // Ação de erro
@@ -66,5 +71,6 @@ if (isset($_GET["id"])) {
 
    mysqli_stmt_close($stmt);
    mysqli_close($link);
-} var_dump($_POST);
-?>
+}
+
+var_dump($_POST);

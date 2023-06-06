@@ -2,15 +2,6 @@
 // conexão à base de dados
 require_once("./connections/connection.php");
 
-// Create a new DB connection
-$link = new_db_connection();
-
-// Create a prepared statement
-$stmt = mysqli_stmt_init($link);
-
-// Define the query
-$query = "SELECT id_sala, nome_sala FROM salas INNER JOIN obra ";
-
 if (isset($_GET["msg"])) {
    $id_func = $_GET["msg"];
    if ($id_func == "7") {
@@ -43,71 +34,31 @@ if (isset($_GET["msg"])) {
 
    <h1 style="color:#393166;" class="mt-5 ms-3">Adicionar Exposicao</h1>
    <div style="border-radius: 2rem; background-color:#F4F2FF;" class="p-4 mb-5 mt-4">
-      <h2 style="color:#393166" class="mb-4">Exposicao</h2>
+      <form action="./scripts/exposicoes/sc_add_exposicoes.php" method="POST" class="was-validated">
+         <div class="mb-3 mt-3">
+            <label for="nome_exposicao" class="form-label">Nome:*</label>
+            <input type="text" class="form-control" id="nome" placeholder="Insira o nome da exposicao" name="nome_exposicao" required>
+         </div>
 
 
-      <?php
-      // Prepare the statement
-      if (mysqli_stmt_prepare($stmt, $query)) {
+         <div class="mb-3 mt-3">
+            <label for="descricao" class="form-label">Descrição:*</label>
+            <input type="text" class="form-control" id="descricao" placeholder="descrição" name="descricao" required>
+         </div>
 
-         // Execute the prepared statement
-         if (mysqli_stmt_execute($stmt)) {
-            // Bind result variables
-            mysqli_stmt_bind_result($stmt, $nome_beacon, $uuid_beacon);
 
-   echo '<form action="./scripts/exposicoes/sc_add_exposicoes.php" method="POST" class="was-validated">
-   <div class="mb-3 mt-3">
-      <label for="uname" class="form-label">Nome:</label>
-      <input type="text" class="form-control" id="nome" placeholder="Insira o nome da exposicao" name="nome_exposicao" required>
+         <div class="mb-3 mt-3">
+            <label for="data_inicio" class="form-label">Data Inicio:</label>
+            <input type="data" class="form-control" id="data_inicio" placeholder="data Inicio:" name="">
+         </div>
+
+
+         <div class="mb-3 mt-3">
+            <label for="data_fim" class="form-label">Data Fim:</label>
+            <input type="data" class="form-control" id="data_fim" placeholder="data Fim" name="data_fim">
+         </div>
+
+         <button href="./scripts/exposicoes/sc_add_exposicao.php" type="submit" class="btn-definir-obra mt-2"> Adicionar Exposição</button>
+      </form>
    </div>
-
- 
-   <div class="mb-3 mt-3">
-      <label for="uname" class="form-label">Descrição:</label>
-      <input type="text" class="form-control" id="descricao" placeholder="descrição" name="descricao" required>
-   </div>
-
-   
-   <div class="mb-3 mt-3">
-      <label for="uname" class="form-label">Data:</label>
-      <input type="data" class="form-control" id="data_inicio" placeholder="data Inicio:" name="data_inicio" required>
-   </div>
-
-   
-   <div class="mb-3 mt-3">
-      <label for="uname" class="form-label">Data:</label>
-      <input type="data" class="form-control" id="data_fim" placeholder="data Fim" name="data_fim" required>
-   </div>
-
-  
-   <div class="mb-3 mt-3">
-      <label for="uname" class="form-label">Sala:</label>
-      <input type="text" class="form-control" id="sala" placeholder="Insira a Sala" name="sala" required>
-   </div>
-
-   
-   <div class="mb-3 mt-3">
-      <label for="uname" class="form-label">Obra:</label>
-      <input type="text" class="form-control" id="obra" placeholder="obra" name="obra" required>
-   </div>
-
-
-
-   <button href="./scripts/exposicoes/sc_add_exposicao.php" type="submit" class="btn-definir-obra mt-2"> Adicionar Exposição</button>
-   </form>';
-         } else {
-            // Execute error
-            echo "Error: " . mysqli_stmt_error($stmt);
-         }
-      } else {
-         // Errors related with the query
-         echo "Error: " . mysqli_error($link);
-      }
-      // Close statement
-      mysqli_stmt_close($stmt);
-      ?>
-
-   </div>
-   <?php
-   mysqli_close($link);
-   ?>
+</div>
